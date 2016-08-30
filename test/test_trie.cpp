@@ -2,7 +2,6 @@
 #include <set>
 #include "catch.hpp"
 #include "trie.h"
-#include "node_minimal.h"
 #include <boost/version.hpp>
 
 using std::cout;

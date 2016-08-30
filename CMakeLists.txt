@@ -10,7 +10,7 @@ set(SOURCE_FILES
         src/parametrized_state.h
         src/universal_automaton.cpp src/universal_automaton.h
         src/state.cpp src/state.h
-        src/node_minimal.h src/trie/node.h src/trie.h src/trie/depth_first_iterator.h)
+        src/trie/node.h src/trie.h src/trie/depth_first_iterator.h)
 
 set(TEST_FILES
         test/main.cpp
@@ -18,7 +18,9 @@ set(TEST_FILES
         test/test_bit_vector.cpp
         src/parametrized_state.cpp
         test/test_parametrized_state.cpp
-        test/test_state.cpp test/test_trie.cpp)
+        test/test_state.cpp
+        test/test_trie.cpp
+        test/test_universal_automaton.cpp)
 
 include_directories(src)
 include_directories(lib)

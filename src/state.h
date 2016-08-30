@@ -10,9 +10,10 @@
 
 #include "position.h"
 
-using std::vector;
 
 namespace ffs {
+    using std::vector;
+
     class State {
 
     public:
@@ -20,7 +21,7 @@ namespace ffs {
         typedef vector<Position>::iterator iterator;
         typedef vector<Position>::const_iterator const_iterator;
 
-        State() { }
+        State() {}
 
         template<class Iterator>
         State(Iterator begin, Iterator end) {
@@ -31,9 +32,9 @@ namespace ffs {
             _minimum_boundary = it->i;
         }
 
-        State(const initializer_list<Position> &positions) : State(positions.begin(), positions.end()) { }
+        State(const initializer_list<Position> &positions) : State(positions.begin(), positions.end()) {}
 
-        State(const vector<Position> &positions) : State(positions.begin(), positions.end()) { }
+        State(const vector<Position> &positions) : State(positions.begin(), positions.end()) {}
 
         static State reduced_union(const vector<State> &states);
 

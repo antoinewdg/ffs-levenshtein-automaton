@@ -9,20 +9,22 @@
 #include <vector>
 #include <list>
 
-using std::ostream;
-using std::vector;
-using std::initializer_list;
-using std::list;
 
 namespace ffs {
+
+    using std::ostream;
+    using std::vector;
+    using std::initializer_list;
+    using std::list;
+
     struct BitVector {
         typedef vector<bool>::const_iterator const_iterator;
 
         vector<bool> data;
 
-        BitVector(const vector<bool> &data) : data(data) { }
+        BitVector(const vector<bool> &data) : data(data) {}
 
-        BitVector(const initializer_list<bool> &data) : data(data) { }
+        BitVector(const initializer_list<bool> &data) : data(data) {}
 
         BitVector sub(int start, int end) const {
             vector<bool> new_data((unsigned long) (end - start));

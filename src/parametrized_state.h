@@ -14,21 +14,21 @@
 #include "position.h"
 #include "state.h"
 
-using std::vector;
-using std::ostream;
-using std::string;
-using std::initializer_list;
-using std::none_of;
-using std::pair;
 
 namespace ffs {
+    using std::vector;
+    using std::ostream;
+    using std::string;
+    using std::initializer_list;
+    using std::none_of;
+    using std::pair;
 
 
     struct ParametrizedState {
 
-        ParametrizedState(const vector<Position> &positions) : positions(positions) { }
+        ParametrizedState(const vector<Position> &positions) : positions(positions) {}
 
-        ParametrizedState(const initializer_list<Position> &positions) : positions(positions) { }
+        ParametrizedState(const initializer_list<Position> &positions) : positions(positions) {}
 
         static vector<ParametrizedState> generate_all(int tolerance);
 

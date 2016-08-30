@@ -13,21 +13,23 @@
 
 #include "bit_vector.h"
 
-using std::ostream;
-using std::vector;
-using std::list;
-using std::abs;
-using std::numeric_limits;
-using std::cout;
-using std::endl;
 
 namespace ffs {
+
+    using std::ostream;
+    using std::vector;
+    using std::list;
+    using std::abs;
+    using std::numeric_limits;
+    using std::cout;
+    using std::endl;
+
     struct Position {
         int i, e;
 
-        Position() { }
+        Position() {}
 
-        Position(int i, int e) : i(i), e(e) { }
+        Position(int i, int e) : i(i), e(e) {}
 
         vector<Position> transition(const BitVector &b) const;
 
