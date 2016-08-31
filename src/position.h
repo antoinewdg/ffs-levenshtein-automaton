@@ -10,6 +10,7 @@
 #include <vector>
 #include <limits>
 #include <list>
+#include <algorithm>
 
 #include "bit_vector.h"
 
@@ -31,7 +32,7 @@ namespace ffs {
 
         Position(int i, int e) : i(i), e(e) {}
 
-        vector<Position> transition(const BitVector &b) const;
+        vector<Position> transition(const BitVector &b, int tolerance) const;
 
         bool is_subsumed(const Position &p) const {
             return p.subsumes(*this);

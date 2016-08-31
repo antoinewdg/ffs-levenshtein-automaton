@@ -22,27 +22,34 @@ TEST_CASE("Position transition works as expected", "[Position]") {
     vector<Position> expected;
 
     expected = {Position(1, 0)};
-    REQUIRE(p.transition({1, 0}) == expected);
-    REQUIRE(p.transition({1, 1, 1, 0, 1}) == expected);
-    REQUIRE(p.transition({1, 0, 0, 0, 0}) == expected);
+    REQUIRE(p.transition({1, 0}, 3) == expected);
+    REQUIRE(p.transition({1, 1, 1, 0, 1}, 3) == expected);
+    REQUIRE(p.transition({1, 0, 0, 0, 0}, 3) == expected);
 
     expected = {Position(0, 1), Position(1, 1)};
-    REQUIRE(p.transition({0}) == expected);
-    REQUIRE(p.transition({0, 0, 0}) == expected);
+    REQUIRE(p.transition({0}, 3) == expected);
+    REQUIRE(p.transition({0, 0, 0}, 3) == expected);
 
     expected = {Position(0, 1), Position(1, 1), Position(2, 1)};
-    REQUIRE(p.transition({0, 1, 0}) == expected);
-    REQUIRE(p.transition({0, 1, 1}) == expected);
+    REQUIRE(p.transition({0, 1, 0}, 3) == expected);
+    REQUIRE(p.transition({0, 1, 1}, 3) == expected);
 
     expected = {Position(0, 1), Position(1, 1), Position(4, 3)};
-    REQUIRE(p.transition({0, 0, 0, 1}) == expected);
-    REQUIRE(p.transition({0, 0, 0, 1, 1, 1}) == expected);
-    REQUIRE(p.transition({0, 0, 0, 1, 0, 0}) == expected);
+    REQUIRE(p.transition({0, 0, 0, 1}, 3) == expected);
+    REQUIRE(p.transition({0, 0, 0, 1, 1, 1}, 3) == expected);
+    REQUIRE(p.transition({0, 0, 0, 1, 0, 0}, 3) == expected);
 
     expected = {Position(0, 1)};
-    REQUIRE(p.transition({}) == expected);
+    REQUIRE(p.transition({}, 3) == expected);
 }
 
+TEST_CASE("Position transition removes non tolerated results") {
+    Position p(0, 1);
+
+    REQUIRE(p.transition({1, 0}, 1) == vector<Position>{Position(1, 1)});
+    REQUIRE(p.transition({0, 0}, 1) == vector<Position>{});
+    REQUIRE(p.transition({}, 1) == vector<Position>{});
+}
 
 TEST_CASE("0#0 subsumes 0#1, 1#1, -1#1 and 2#2 but not 3#2 nor 1#0") {
     Position p(0, 0);

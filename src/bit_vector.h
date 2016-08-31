@@ -27,6 +27,9 @@ namespace ffs {
         BitVector(const initializer_list<bool> &data) : data(data) {}
 
         BitVector sub(int start, int end) const {
+            if (end <= start) {
+                return BitVector({});
+            }
             vector<bool> new_data((unsigned long) (end - start));
             std::copy(data.begin() + start, data.begin() + end, new_data.begin());
             return BitVector(new_data);

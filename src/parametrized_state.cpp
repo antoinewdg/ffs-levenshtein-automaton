@@ -64,6 +64,7 @@ namespace ffs {
         delete (newly_generated);
 
         vector<ParametrizedState> result;
+        result.push_back(ParametrizedState({}));
         for (vector<Position> v : generated) {
             result.push_back(ParametrizedState(v));
         }
@@ -82,12 +83,12 @@ namespace ffs {
         return pair<int, ParametrizedState>(parameter, ParametrizedState(result));
     };
 
-    pair<int, ParametrizedState> ParametrizedState::transition(const BitVector &b) const {
+    pair<int, ParametrizedState> ParametrizedState::transition(const BitVector &b, int tolerance) const {
 
         // Compute the transitions of all positions
         vector<State> transitions(positions.size());
-        auto transitioner = [b](const Position &p) {
-            return State(p.transition(b.sub(p.i)));
+        auto transitioner = [b, tolerance](const Position &p) {
+            return State(p.transition(b.sub(p.i), tolerance));
         };
         std::transform(positions.begin(), positions.end(), transitions.begin(), transitioner);
 

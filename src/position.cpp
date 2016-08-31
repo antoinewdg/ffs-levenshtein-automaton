@@ -2,15 +2,23 @@
 
 namespace ffs {
 
-    vector<Position> Position::transition(const BitVector &b) const {
+    vector<Position> Position::transition(const BitVector &b, int tolerance) const {
         auto it = b.begin();
+        auto filter_tolerated = [tolerance](const vector<Position> &v) {
+            vector<Position> result(v.size());
+            auto nend = std::copy_if(v.begin(), v.end(), result.begin(), [tolerance](const Position &p) {
+                return p.e <= tolerance;
+            });
+            result.resize(size_t(std::distance(result.begin(), nend)));
+            return result;
+        };
 
         if (it == b.end()) {
-            return {Position(i, e + 1)};
+            return filter_tolerated({Position(i, e + 1)});
         }
 
-        if (it != b.end() && *it == 1) {
-            return {Position(i + 1, e)};
+        if (*it == 1) {
+            return filter_tolerated({Position(i + 1, e)});
         }
 
         vector<Position> result = {Position(i, e + 1), Position(i + 1, e + 1)};
@@ -23,7 +31,7 @@ namespace ffs {
             }
         }
 
-        return result;
+        return filter_tolerated(result);
     }
 
 

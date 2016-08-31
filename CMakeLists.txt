@@ -7,20 +7,21 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(SOURCE_FILES
         src/bit_vector.cpp src/bit_vector.h
         src/position.h src/position.cpp
-        src/parametrized_state.h
-        src/universal_automaton.cpp src/universal_automaton.h
+        src/parametrized_state.h src/parametrized_state.cpp
         src/state.cpp src/state.h
-        src/trie/node.h src/trie.h src/trie/depth_first_iterator.h)
+        src/trie/node.h src/trie.h src/trie/depth_first_iterator.h
+        #        src/universal_automaton.cpp src/universal_automaton.h
+        )
 
 set(TEST_FILES
         test/main.cpp
         test/test_position.cpp
         test/test_bit_vector.cpp
-        src/parametrized_state.cpp
         test/test_parametrized_state.cpp
         test/test_state.cpp
         test/test_trie.cpp
-        test/test_universal_automaton.cpp)
+        #        test/test_universal_automaton.cpp
+        )
 
 include_directories(src)
 include_directories(lib)

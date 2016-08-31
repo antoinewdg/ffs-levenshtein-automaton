@@ -47,11 +47,11 @@ namespace ffs {
         }
 
         State state;
-        state._positions = result;
+        state.m_positions = result;
 
-        auto comp = [](const State &s, const State &t) { return s._minimum_boundary < t._minimum_boundary; };
+        auto comp = [](const State &s, const State &t) { return s.m_minimum_boundary < t.m_minimum_boundary; };
         auto it = std::min_element(states.begin(), states.end(), comp);
-        state._minimum_boundary = it->_minimum_boundary;
+        state.m_minimum_boundary = it->m_minimum_boundary;
 
         return state;
     }

@@ -34,7 +34,7 @@ namespace ffs {
 
         static pair<int, ParametrizedState> parametrized_from_state(State state);
 
-        pair<int, ParametrizedState> transition(const BitVector &b) const;
+        pair<int, ParametrizedState> transition(const BitVector &b, int tolerance) const;
 
         State positions;
     };
